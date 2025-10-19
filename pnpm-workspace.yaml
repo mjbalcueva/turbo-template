@@ -1,3 +1,11 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+  - services/*
+  - tooling/*
+
+catalog:
+  dotenv: ^17.2.3
+  zod: ^4.1.12
+  typescript: ^5.9.3
+  "@types/node": ^22.18.11
