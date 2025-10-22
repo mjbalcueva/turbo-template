@@ -7,7 +7,8 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".cache/tsbuildinfo.json", "dist/**"]
+      "outputs": [".cache/tsbuildinfo.json", "dist/**"],
+      "cache": true
     },
     "dev": {
       "dependsOn": ["^dev"],
@@ -20,11 +21,22 @@
     },
     "lint": {
       "dependsOn": ["^topo", "^build"],
-      "outputs": [".cache/.eslintcache"]
+      "outputs": [".cache/.eslintcache"],
+      "cache": true
     },
     "typecheck": {
       "dependsOn": ["^topo", "^build"],
-      "outputs": [".cache/tsbuildinfo.json"]
+      "outputs": [".cache/tsbuildinfo.json"],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "cache": true,
+      "outputs": ["coverage/**"]
+    },
+    "test:e2e": {
+      "cache": false,
+      "persistent": false
     },
     "clean": {
       "cache": false
