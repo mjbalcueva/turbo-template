@@ -43,10 +43,13 @@ yarn-error.log*
 
 # typescript
 dist/
-.cache
 
 # turbo
 .turbo
+
+# cache
+.cache
+
 
 # compiled output
 /dist
