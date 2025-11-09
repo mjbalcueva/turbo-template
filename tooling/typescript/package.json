@@ -1,6 +1,13 @@
 {
   "name": "@repo/tsconfig",
   "private": true,
+  "type": "module",
+  "exports": {
+    "./base.json": "./base.json",
+    "./nextjs.json": "./nextjs.json",
+    "./nodejs.json": "./nodejs.json",
+    "./compiled-package.json": "./compiled-package.json"
+  },
   "files": [
     "*.json"
   ]

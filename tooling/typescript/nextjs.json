@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    /* Base Options */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ES2024",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "checkJs": true,
+
+    /* Bundled projects */
+    "lib": ["dom", "dom.iterable", "ES2024"],
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+
+    "incremental": true,
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    ".next/dev/types/**/*.ts",
+    ".next/types/**/*.ts",
+    "**/*.cjs",
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
+    "eslint.config.*",
+    "next-env.d.ts",
+    "next.config.*",
+    "postcss.config.*",
+    "prettier.config.*"
+  ],
+  "exclude": ["node_modules"]
+}

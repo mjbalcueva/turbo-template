@@ -1,5 +1,10 @@
-import nextPlugin from "@next/eslint-plugin-next";
+import type { ESLint, Linter } from "eslint";
+import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
+import eslintNextPlugin from "@next/eslint-plugin-next";
 import { defineConfig } from "eslint/config";
+
+// Fix up the plugin to work with flat config
+const nextPlugin = fixupPluginRules(eslintNextPlugin as ESLint.Plugin);
 
 export const nextjsConfig = defineConfig({
   files: ["**/*.ts", "**/*.tsx"],
@@ -7,9 +12,12 @@ export const nextjsConfig = defineConfig({
     "@next/next": nextPlugin,
   },
   rules: {
-    ...nextPlugin.configs.recommended.rules,
-    ...nextPlugin.configs["core-web-vitals"].rules,
-    // TypeError: context.getAncestors is not a function
-    "@next/next/no-duplicate-head": "off",
+    ...Object.fromEntries(
+      Object.entries(
+        eslintNextPlugin.configs.recommended.rules as Linter.RulesRecord,
+      ),
+    ),
+    // Disable react-in-jsx-scope for Next.js since it uses the new JSX transform
+    "react/react-in-jsx-scope": "off",
   },
 });

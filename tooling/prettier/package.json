@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./index.js"
+    ".": "./index.js",
+    "./nextjs": "./nextjs.js",
+    "./nodejs": "./nodejs.js"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",

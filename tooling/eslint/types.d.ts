@@ -12,21 +12,72 @@ declare module "eslint-plugin-import" {
   export const rules: Record<string, Rule.RuleModule>;
 }
 
-// declare module "eslint-plugin-react" {
-//   import type { Linter, Rule } from "eslint";
+declare module "eslint-plugin-react" {
+  import type { Linter, Rule, ESLint } from "eslint";
 
-//   export const configs: {
-//     flat: {
-//       recommended: { rules: Linter.RulesRecord };
-//       "jsx-runtime": { rules: Linter.RulesRecord };
-//     };
-//   };
-//   export const rules: Record<string, Rule.RuleModule>;
-// }
+  const plugin: {
+    configs: {
+      recommended: { rules: Linter.RulesRecord };
+      "jsx-runtime": { rules: Linter.RulesRecord };
+      flat: {
+        recommended: { rules: Linter.RulesRecord };
+        "jsx-runtime": { rules: Linter.RulesRecord };
+      };
+    };
+    rules: Record<string, Rule.RuleModule>;
+  };
+
+  export default plugin;
+  export const configs: {
+    recommended: { rules: Linter.RulesRecord };
+    "jsx-runtime": { rules: Linter.RulesRecord };
+    flat: {
+      recommended: { rules: Linter.RulesRecord };
+      "jsx-runtime": { rules: Linter.RulesRecord };
+    };
+  };
+  export const rules: Record<string, Rule.RuleModule>;
+}
+
+declare module "eslint-plugin-react-hooks" {
+  import type { Linter, Rule, ESLint } from "eslint";
+
+  const plugin: {
+    configs: {
+      recommended: { rules: Linter.RulesRecord };
+      "recommended-latest": { rules: Linter.RulesRecord };
+      flat: {
+        recommended: { rules: Linter.RulesRecord };
+        "recommended-latest": { rules: Linter.RulesRecord };
+      };
+    };
+    rules: Record<string, Rule.RuleModule>;
+  };
+
+  export default plugin;
+  export const configs: {
+    recommended: { rules: Linter.RulesRecord };
+    "recommended-latest": { rules: Linter.RulesRecord };
+    flat: {
+      recommended: { rules: Linter.RulesRecord };
+      "recommended-latest": { rules: Linter.RulesRecord };
+    };
+  };
+  export const rules: Record<string, Rule.RuleModule>;
+}
 
 declare module "@next/eslint-plugin-next" {
   import type { Linter, Rule } from "eslint";
 
+  const plugin: {
+    configs: {
+      recommended: { rules: Linter.RulesRecord };
+      "core-web-vitals": { rules: Linter.RulesRecord };
+    };
+    rules: Record<string, Rule.RuleModule>;
+  };
+
+  export default plugin;
   export const configs: {
     recommended: { rules: Linter.RulesRecord };
     "core-web-vitals": { rules: Linter.RulesRecord };

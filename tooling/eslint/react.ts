@@ -1,19 +1,23 @@
-import reactPlugin from "eslint-plugin-react";
+/// <reference types="./types.d.ts" />
+
+import type { ESLint, Linter } from "eslint";
+import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import { defineConfig } from "eslint/config";
 
-export const reactConfig = defineConfig(
-  {
-    files: ["**/*.ts", "**/*.tsx"],
-    ...reactPlugin.configs.flat.recommended,
-    ...reactPlugin.configs.flat["jsx-runtime"],
-    languageOptions: {
-      ...reactPlugin.configs.flat.recommended?.languageOptions,
-      ...reactPlugin.configs.flat["jsx-runtime"]?.languageOptions,
-      globals: {
-        React: "writable",
-      },
+export const reactConfig = defineConfig({
+  files: ["**/*.ts", "**/*.tsx"],
+  plugins: {
+    react: react as ESLint.Plugin,
+    "react-hooks": reactHooks as ESLint.Plugin,
+  },
+  settings: {
+    react: {
+      version: "detect",
     },
   },
-  reactHooks.configs.flat["recommended-latest"]!,
-);
+  rules: {
+    ...(react.configs.recommended.rules as Linter.RulesRecord),
+    ...(reactHooks.configs.recommended.rules as Linter.RulesRecord),
+  },
+});

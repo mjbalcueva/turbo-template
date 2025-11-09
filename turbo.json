@@ -6,7 +6,7 @@
       "dependsOn": ["^topo"]
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^lint", "^typecheck"],
       "outputs": [".cache/tsbuildinfo.json", "dist/**"],
       "cache": true
     },
