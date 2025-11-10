@@ -15,6 +15,10 @@
       "cache": false,
       "persistent": false
     },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
     "format": {
       "outputs": [".cache/.prettiercache"],
       "outputLogs": "new-only"
