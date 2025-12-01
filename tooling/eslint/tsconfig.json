@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/tsconfig/base.json",
-  "include": ["."],
-  "exclude": ["node_modules", "*.mjs"]
+	"extends": "@repo/tsconfig/pkg.json",
+	"include": ["."],
+	"exclude": ["node_modules"]
 }

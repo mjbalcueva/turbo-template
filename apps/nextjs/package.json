@@ -32,5 +32,5 @@
 		"prettier": "catalog:",
 		"typescript": "catalog:"
 	},
-	"prettier": "@repo/prettier-config/nextjs"
+	"prettier": "@repo/prettier-config"
 }

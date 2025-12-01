@@ -20,11 +20,33 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "checkJs": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
 
-    /** Transpile using Bundler (not tsc) */
-    "module": "Preserve",
-    "moduleResolution": "Bundler",
-    "noEmit": true
+    /* Base Options */
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolvePackageJsonExports": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+
+    /* Emit / Output */
+    "declaration": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "noEmit": false,
+
+    /* Decorators */
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
+  "include": [
+    "**/*.cjs",
+    "**/*.js",
+    "**/*.ts",
+    "eslint.config.*",
+    "prettier.config.*"
+  ],
   "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }

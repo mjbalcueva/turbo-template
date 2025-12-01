@@ -50,7 +50,7 @@
 		"tsconfig-paths": "^4.2.0",
 		"typescript": "catalog:"
 	},
-	"prettier": "@repo/prettier-config/nodejs",
+	"prettier": "@repo/prettier-config",
 	"jest": {
 		"moduleFileExtensions": [
 			"js",

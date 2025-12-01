@@ -1,13 +1,11 @@
-import { baseConfig } from "@repo/eslint-config/base"
-import { nodejsConfig } from "@repo/eslint-config/nodejs"
+import { apiConfig } from "@repo/eslint-config/nest"
 import { defineConfig } from "eslint/config"
 
 export default defineConfig(
 	{
 		ignores: ["eslint.config.mjs", "dist/**"],
 	},
-	baseConfig,
-	nodejsConfig,
+	apiConfig,
 	{
 		rules: {
 			"@typescript-eslint/no-explicit-any": "off",

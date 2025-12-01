@@ -1,8 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./base.json",
   "compilerOptions": {
-    /* Base Options */
+    /** Base Options */
     "esModuleInterop": true,
     "skipLibCheck": true,
     "target": "ES2024",
@@ -12,12 +11,17 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
 
-    /* Strictness */
+    /** Keep TSC performant in monorepos */
+    "incremental": true,
+    "disableSourceOfProjectReferenceRedirect": true,
+    "tsBuildInfoFile": "${configDir}/.cache/tsbuildinfo.json",
+
+    /** Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "checkJs": true,
 
-    /* Bundled projects */
+    /** Bundled projects */
     "lib": ["dom", "dom.iterable", "ES2024"],
     "noEmit": true,
     "module": "ESNext",
@@ -30,8 +34,6 @@
         "name": "next"
       }
     ],
-
-    "incremental": true,
 
     /* Path Aliases */
     "baseUrl": ".",
@@ -52,5 +54,5 @@
     "postcss.config.*",
     "prettier.config.*"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }

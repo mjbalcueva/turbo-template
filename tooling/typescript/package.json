@@ -3,10 +3,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./base.json": "./base.json",
-    "./nextjs.json": "./nextjs.json",
-    "./nodejs.json": "./nodejs.json",
-    "./compiled-package.json": "./compiled-package.json"
+    "./next.json": "./next.json",
+    "./nest.json": "./nest.json",
+    "./pkg.json": "./pkg.json"
   },
   "files": [
     "*.json"
