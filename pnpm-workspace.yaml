@@ -6,32 +6,32 @@ packages:
 catalog:
   '@better-auth/cli': 1.4.0-beta.9
   '@eslint/js': ^9.39.1
-  '@nestjs/common': ^11.1.8
-  '@nestjs/core': ^11.1.8
+  '@nestjs/common': ^11.1.9
+  '@nestjs/core': ^11.1.9
   '@tailwindcss/postcss': ^4.1.17
-  '@tanstack/react-form': ^1.23.8
-  '@tanstack/react-query': ^5.90.7
-  '@trpc/client': ^11.7.1
-  '@trpc/server': ^11.7.1
-  '@trpc/tanstack-react-query': ^11.7.1
-  '@types/node': ^22.19.0
+  '@tanstack/react-form': ^1.26.0
+  '@tanstack/react-query': ^5.90.11
+  '@trpc/client': ^11.7.2
+  '@trpc/server': ^11.7.2
+  '@trpc/tanstack-react-query': ^11.7.2
+  '@types/node': ^22.19.1
   '@types/react': 19.2.2
   '@types/react-dom': 19.2.2
   better-auth: 1.4.0-beta.9
   eslint: ^9.39.1
   next: 16.0.1
-  prettier: ^3.6.2
+  prettier: ^3.7.3
   react: 19.2.0
   react-dom: 19.2.0
   tailwindcss: ^4.1.17
   typescript: ^5.9.3
-  typescript-eslint: ^8.46.3
-  zod: ^4.1.12
+  typescript-eslint: ^8.48.0
+  zod: ^4.1.13
 
 catalogs:
   react19:
-    '@types/react': ^19.2.2
-    '@types/react-dom': ^19.2.2
+    '@types/react': ^19.2.7
+    '@types/react-dom': ^19.2.3
     react: 19.1.1
     react-dom: 19.1.1
 
