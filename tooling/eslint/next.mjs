@@ -1,7 +1,6 @@
 import * as path from "node:path"
 import { includeIgnoreFile } from "@eslint/compat"
 import nextPlugin from "@next/eslint-plugin-next"
-const { flatConfig } = nextPlugin
 import prettier from "eslint-config-prettier"
 import react from "eslint-plugin-react"
 import reactHooks from "eslint-plugin-react-hooks"
@@ -48,10 +47,7 @@ export const appConfig = defineConfig(
 			// TypeScript-specific rules
 			"@typescript-eslint/array-type": "off",
 			"@typescript-eslint/consistent-type-definitions": "off",
-			"@typescript-eslint/consistent-type-imports": [
-				"warn",
-				{ prefer: "type-imports", fixStyle: "inline-type-imports" },
-			],
+			"@typescript-eslint/consistent-type-imports": ["warn", { fixStyle: "inline-type-imports" }],
 			"@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
 			"@typescript-eslint/no-explicit-any": "warn",
 			"@typescript-eslint/require-await": "off",
@@ -79,10 +75,17 @@ export const appConfig = defineConfig(
 		},
 	},
 	// Next.js
-	...(Array.isArray(flatConfig.recommended) ? flatConfig.recommended : [flatConfig.recommended]),
 	{
 		files: ["**/*.ts", "**/*.tsx"],
-		rules: { "react/react-in-jsx-scope": "off" },
+		plugins: {
+			// @ts-ignore - nextPlugin has legacy config types incompatible with flat config, but works at runtime
+			"@next/next": nextPlugin,
+		},
+		// @ts-ignore - nextPlugin.configs.recommended.rules has string values incompatible with RuleConfig type
+		rules: {
+			...nextPlugin.configs.recommended.rules,
+			"react/react-in-jsx-scope": "off",
+		},
 	},
 	// Prettier (must be last to override conflicting rules)
 	prettier
