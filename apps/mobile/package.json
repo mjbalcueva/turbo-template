@@ -11,8 +11,7 @@
 		"build:all": "flutter build apk && flutter build ios",
 		"dev": "flutter run",
 		"test": "flutter test --coverage",
-		"format": "dart format --set-exit-if-changed .",
-		"format:fix": "dart format --set-exit-if-changed --overwrite .",
+		"format:fix": "dart format",
 		"clean": "flutter clean",
 		"start": "flutter run --release"
 	}
