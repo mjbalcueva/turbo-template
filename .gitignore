@@ -21,6 +21,17 @@ apps/expo/.gitignore
 apps/expo/ios
 apps/expo/android
 
+# flutter
+apps/mobile/build/
+apps/mobile/.dart_tool/
+apps/mobile/.flutter-plugins
+apps/mobile/.flutter-plugins-dependencies
+apps/mobile/.packages
+apps/mobile/.pub-cache/
+apps/mobile/coverage/
+apps/mobile/ios/Pods/
+apps/mobile/android/.gradle/
+
 # production
 build
 

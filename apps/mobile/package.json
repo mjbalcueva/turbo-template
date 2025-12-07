@@ -1,0 +1,19 @@
+{
+	"name": "@repo/mobile",
+	"version": "0.0.1",
+	"description": "Flutter mobile app for iOS and Android",
+	"private": true,
+	"license": "UNLICENSED",
+	"scripts": {
+		"build": "flutter build apk",
+		"build:android": "flutter build apk",
+		"build:ios": "flutter build ios",
+		"build:all": "flutter build apk && flutter build ios",
+		"dev": "flutter run",
+		"test": "flutter test --coverage",
+		"format": "dart format --set-exit-if-changed .",
+		"format:fix": "dart format --set-exit-if-changed --overwrite .",
+		"clean": "flutter clean",
+		"start": "flutter run --release"
+	}
+}

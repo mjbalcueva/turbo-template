@@ -1,74 +1,74 @@
 {
-  "$schema": "https://turborepo.com/schema.json",
-  "ui": "tui",
-  "tasks": {
-    "topo": {
-      "dependsOn": ["^topo"]
-    },
-    "build": {
-      "dependsOn": ["^build", "^lint", "^typecheck"],
-      "outputs": [".cache/tsbuildinfo.json", "dist/**"],
-      "cache": true
-    },
-    "dev": {
-      "dependsOn": ["^dev"],
-      "cache": false,
-      "persistent": false
-    },
-    "start": {
-      "dependsOn": ["build"],
-      "cache": false,
-      "persistent": true
-    },
-    "format": {
-      "outputs": [".cache/.prettiercache"],
-      "outputLogs": "new-only"
-    },
-    "lint": {
-      "dependsOn": ["^topo", "^build"],
-      "outputs": [".cache/.eslintcache"],
-      "cache": true
-    },
-    "typecheck": {
-      "dependsOn": ["^topo", "^build"],
-      "outputs": [".cache/tsbuildinfo.json"],
-      "cache": true
-    },
-    "test": {
-      "dependsOn": ["^test"],
-      "cache": true,
-      "outputs": ["coverage/**"]
-    },
-    "test:e2e": {
-      "cache": false,
-      "persistent": false
-    },
-    "clean": {
-      "cache": false
-    },
-    "push": {
-      "cache": false,
-      "interactive": true
-    },
-    "studio": {
-      "cache": false,
-      "persistent": true
-    }
-  },
-  "globalEnv": [
-    "POSTGRES_URL",
-    "AUTH_DISCORD_ID",
-    "AUTH_DISCORD_SECRET",
-    "AUTH_REDIRECT_PROXY_URL",
-    "AUTH_SECRET",
-    "PORT"
-  ],
-  "globalPassThroughEnv": [
-    "NODE_ENV",
-    "CI",
-    "VERCEL",
-    "VERCEL_ENV",
-    "VERCEL_URL",
-    "npm_lifecycle_event"
-  ]
+	"$schema": "https://turborepo.com/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"topo": {
+			"dependsOn": ["^topo"]
+		},
+		"build": {
+			"dependsOn": ["^build", "^lint", "^typecheck"],
+			"outputs": [".cache/tsbuildinfo.json", "dist/**"],
+			"cache": true
+		},
+		"dev": {
+			"dependsOn": ["^dev"],
+			"cache": false,
+			"persistent": false
+		},
+		"start": {
+			"dependsOn": ["build"],
+			"cache": false,
+			"persistent": true
+		},
+		"format": {
+			"outputs": [".cache/.prettiercache"],
+			"outputLogs": "new-only"
+		},
+		"lint": {
+			"dependsOn": ["^topo", "^build"],
+			"outputs": [".cache/.eslintcache"],
+			"cache": true
+		},
+		"typecheck": {
+			"dependsOn": ["^topo", "^build"],
+			"outputs": [".cache/tsbuildinfo.json"],
+			"cache": true
+		},
+		"test": {
+			"dependsOn": ["^test"],
+			"cache": true,
+			"outputs": ["coverage/**"]
+		},
+		"test:e2e": {
+			"cache": false,
+			"persistent": false
+		},
+		"clean": {
+			"cache": false
+		},
+		"push": {
+			"cache": false,
+			"interactive": true
+		},
+		"studio": {
+			"cache": false,
+			"persistent": true
+		}
+	},
+	"globalEnv": [
+		"POSTGRES_URL",
+		"AUTH_DISCORD_ID",
+		"AUTH_DISCORD_SECRET",
+		"AUTH_REDIRECT_PROXY_URL",
+		"AUTH_SECRET",
+		"PORT"
+	],
+	"globalPassThroughEnv": [
+		"NODE_ENV",
+		"CI",
+		"VERCEL",
+		"VERCEL_ENV",
+		"VERCEL_URL",
+		"npm_lifecycle_event"
+	]
 }
