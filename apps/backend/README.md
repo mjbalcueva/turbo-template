@@ -57,6 +57,12 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
+## Health endpoint
+
+- Route: `GET /api/health` (version-neutral)
+- Response: includes overall status, uptime (seconds), ISO timestamp, app version, database check result (Postgres via Drizzle), and a cache entry marked `not_configured`.
+- Database: uses `POSTGRES_URL` from `.env` to perform a lightweight Drizzle query; if not set, the database status is reported as `not_configured`.
+
 ## Deployment
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
