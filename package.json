@@ -5,7 +5,7 @@
 		"node": ">=22.20.0",
 		"pnpm": ">=10.15.1"
 	},
-	"packageManager": "pnpm@10.24.0",
+	"packageManager": "pnpm@10.25.0",
 	"scripts": {
 		"build": "turbo run build",
 		"clean": "git clean -xdf node_modules",
@@ -13,6 +13,8 @@
 		"auth:generate": "pnpm -F @repo/auth generate",
 		"db:push": "turbo -F @repo/db push",
 		"db:studio": "turbo -F @repo/db studio",
+		"db:generate": "turbo -F @repo/db generate",
+		"db:migrate": "turbo -F @repo/db migrate",
 		"dev": "turbo watch dev --continue",
 		"dev:web": "turbo watch dev -F @repo/web...",
 		"dev:mobile": "turbo watch dev -F @repo/mobile...",

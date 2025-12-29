@@ -9,32 +9,32 @@ export class TodosController {
 	constructor(private readonly todosService: TodosService) {}
 
 	@Get()
-	getTodos(): Todo[] {
-		return this.todosService.findAll()
+	async getTodos(): Promise<Todo[]> {
+		return await this.todosService.findAll()
 	}
 
 	@Get(":id")
-	getTodo(@Param("id") id: string): Todo {
-		return this.todosService.findOne(Number(id))
+	async getTodo(@Param("id") id: string): Promise<Todo> {
+		return await this.todosService.findOne(Number(id))
 	}
 
 	@Post()
-	createTodo(@Body() payload: CreateTodoDto): Todo {
-		return this.todosService.create(payload)
+	async createTodo(@Body() payload: CreateTodoDto): Promise<Todo> {
+		return await this.todosService.create(payload)
 	}
 
 	@Put(":id")
-	replaceTodo(@Param("id") id: string, @Body() payload: CreateTodoDto): Todo {
-		return this.todosService.replace(Number(id), payload)
+	async replaceTodo(@Param("id") id: string, @Body() payload: CreateTodoDto): Promise<Todo> {
+		return await this.todosService.replace(Number(id), payload)
 	}
 
 	@Patch(":id")
-	updateTodo(@Param("id") id: string, @Body() payload: UpdateTodoDto): Todo {
-		return this.todosService.update(Number(id), payload)
+	async updateTodo(@Param("id") id: string, @Body() payload: UpdateTodoDto): Promise<Todo> {
+		return await this.todosService.update(Number(id), payload)
 	}
 
 	@Delete(":id")
-	removeTodo(@Param("id") id: string): void {
-		return this.todosService.remove(Number(id))
+	async removeTodo(@Param("id") id: string): Promise<void> {
+		return await this.todosService.remove(Number(id))
 	}
 }

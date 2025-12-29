@@ -15,32 +15,37 @@ export class TodosController {
 	}
 
 	@Get()
-	getTodos(): TodoV2[] {
-		return this.todosService.findAll().map(todo => this.addVersion(todo))
+	async getTodos(): Promise<TodoV2[]> {
+		const todos = await this.todosService.findAll()
+		return todos.map(todo => this.addVersion(todo))
 	}
 
 	@Get(":id")
-	getTodo(@Param("id") id: string): TodoV2 {
-		return this.addVersion(this.todosService.findOne(Number(id)))
+	async getTodo(@Param("id") id: string): Promise<TodoV2> {
+		const todo = await this.todosService.findOne(Number(id))
+		return this.addVersion(todo)
 	}
 
 	@Post()
-	createTodo(@Body() payload: CreateTodoDto): TodoV2 {
-		return this.addVersion(this.todosService.create(payload))
+	async createTodo(@Body() payload: CreateTodoDto): Promise<TodoV2> {
+		const todo = await this.todosService.create(payload)
+		return this.addVersion(todo)
 	}
 
 	@Put(":id")
-	replaceTodo(@Param("id") id: string, @Body() payload: CreateTodoDto): TodoV2 {
-		return this.addVersion(this.todosService.replace(Number(id), payload))
+	async replaceTodo(@Param("id") id: string, @Body() payload: CreateTodoDto): Promise<TodoV2> {
+		const todo = await this.todosService.replace(Number(id), payload)
+		return this.addVersion(todo)
 	}
 
 	@Patch(":id")
-	updateTodo(@Param("id") id: string, @Body() payload: UpdateTodoDto): TodoV2 {
-		return this.addVersion(this.todosService.update(Number(id), payload))
+	async updateTodo(@Param("id") id: string, @Body() payload: UpdateTodoDto): Promise<TodoV2> {
+		const todo = await this.todosService.update(Number(id), payload)
+		return this.addVersion(todo)
 	}
 
 	@Delete(":id")
-	removeTodo(@Param("id") id: string): void {
-		return this.todosService.remove(Number(id))
+	async removeTodo(@Param("id") id: string): Promise<void> {
+		return await this.todosService.remove(Number(id))
 	}
 }

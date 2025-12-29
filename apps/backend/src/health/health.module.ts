@@ -1,14 +1,14 @@
 import { Module } from "@nestjs/common"
 import { TerminusModule } from "@nestjs/terminus"
 
+import { DatabaseModule } from "../database/database.module"
 import { DrizzleHealthIndicator } from "./drizzle/drizzle.health"
-import { drizzleProviders } from "./drizzle/drizzle.providers"
 import { HealthController } from "./health.controller"
 import { HealthService } from "./health.service"
 
 @Module({
-	imports: [TerminusModule],
+	imports: [TerminusModule, DatabaseModule],
 	controllers: [HealthController],
-	providers: [HealthService, DrizzleHealthIndicator, ...drizzleProviders],
+	providers: [HealthService, DrizzleHealthIndicator],
 })
 export class HealthModule {}

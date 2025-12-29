@@ -2,7 +2,7 @@ import { Inject, Injectable } from "@nestjs/common"
 import { type HealthIndicatorResult } from "@nestjs/terminus"
 import { sql } from "drizzle-orm"
 
-import { DRIZZLE_DB, type DrizzleDb } from "./drizzle.providers"
+import { DRIZZLE_DB, type DrizzleDb } from "../../database/drizzle.providers"
 
 @Injectable()
 export class DrizzleHealthIndicator {

@@ -1,0 +1,62 @@
+{
+	"name": "@repo/db",
+	"version": "0.0.1",
+	"description": "Framework-agnostic Drizzle ORM database package with schema definitions and database client.",
+	"author": "",
+	"private": true,
+	"license": "UNLICENSED",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./schema": {
+			"types": "./dist/schema/index.d.ts",
+			"default": "./dist/schema/index.js"
+		},
+		"./client": {
+			"types": "./dist/client.d.ts",
+			"default": "./dist/client.js"
+		}
+	},
+	"typesVersions": {
+		"*": {
+			"schema": [
+				"./dist/schema/index.d.ts"
+			],
+			"client": [
+				"./dist/client.d.ts"
+			]
+		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"format": "prettier --write \"src/**/*.ts\"",
+		"lint": "eslint --flag unstable_native_nodejs_ts_config \"src/**/*.ts\" --fix",
+		"typecheck": "tsc --noEmit",
+		"push": "drizzle-kit push",
+		"studio": "drizzle-kit studio",
+		"generate": "drizzle-kit generate",
+		"migrate": "drizzle-kit migrate"
+	},
+	"dependencies": {
+		"drizzle-orm": "^0.45.0",
+		"pg": "^8.16.3"
+	},
+	"devDependencies": {
+		"@repo/eslint-config": "workspace:*",
+		"@repo/prettier-config": "workspace:*",
+		"@repo/tsconfig": "workspace:*",
+		"@types/node": "catalog:",
+		"@types/pg": "^8.15.6",
+		"drizzle-kit": "^0.30.6",
+		"eslint": "catalog:",
+		"prettier": "catalog:",
+		"typescript": "catalog:"
+	},
+	"prettier": "@repo/prettier-config"
+}

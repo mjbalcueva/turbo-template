@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from "@nestjs/common"
+import { Inject, Injectable } from "@nestjs/common"
+import { eq } from "drizzle-orm"
+
+import { DRIZZLE_DB, type DrizzleDb } from "../../../database/drizzle.providers"
+import { todos } from "@repo/db/schema"
 
 import { CreateTodoDto } from "./dto/create-todo.dto"
 import { UpdateTodoDto } from "./dto/update-todo.dto"
@@ -7,58 +11,79 @@ export type Todo = {
 	id: number
 	title: string
 	completed: boolean
+	createdAt: Date
+	updatedAt: Date
 }
 
 @Injectable()
 export class TodosService {
-	private todos: Todo[] = [
-		{ id: 1, title: "First todo example", completed: false },
-		{ id: 2, title: "Second todo example", completed: true },
-	]
+	constructor(@Inject(DRIZZLE_DB) private readonly db: DrizzleDb) {}
 
-	findAll(): Todo[] {
-		return this.todos
+	async findAll(): Promise<Todo[]> {
+		return this.db.select().from(todos)
 	}
 
-	create(payload: CreateTodoDto): Todo {
-		const todo: Todo = {
-			id: this.todos.length ? Math.max(...this.todos.map(t => t.id)) + 1 : 1,
-			title: payload.title,
-			completed: payload.completed ?? false,
-		}
-		this.todos = [...this.todos, todo]
+	async create(payload: CreateTodoDto): Promise<Todo> {
+		const [todo] = await this.db
+			.insert(todos)
+			.values({
+				title: payload.title,
+				completed: payload.completed ?? false,
+			})
+			.returning()
+
+		if (!todo) throw new Error("Todo not created")
+
 		return todo
 	}
 
-	findOne(id: number): Todo {
-		const todo = this.todos.find(item => item.id === id)
+	async findOne(id: number): Promise<Todo> {
+		const [todo] = await this.db.select().from(todos).where(eq(todos.id, id))
+
+		if (!todo) throw new Error(`Todo ${id} not found`)
+
+		return todo
+	}
+
+	async replace(id: number, payload: CreateTodoDto): Promise<Todo> {
+		await this.findOne(id)
+		const [todo] = await this.db
+			.update(todos)
+			.set({
+				title: payload.title,
+				completed: payload.completed ?? false,
+				updatedAt: new Date(),
+			})
+			.where(eq(todos.id, id))
+			.returning()
 		if (!todo) {
-			throw new NotFoundException(`Todo ${id} not found`)
+			throw new Error("Todo not replaced")
 		}
 		return todo
 	}
 
-	replace(id: number, payload: CreateTodoDto): Todo {
-		this.findOne(id)
-		const next: Todo = { id, title: payload.title, completed: payload.completed ?? false }
-		this.todos = this.todos.map(item => (item.id === id ? next : item))
-		return next
-	}
-
-	update(id: number, payload: UpdateTodoDto): Todo {
-		const existing = this.findOne(id)
-		const next: Todo = {
-			...existing,
-			...("title" in payload ? { title: payload.title ?? existing.title } : {}),
-			...("completed" in payload ? { completed: payload.completed ?? false } : {}),
+	async update(id: number, payload: UpdateTodoDto): Promise<Todo> {
+		const updateData: { title?: string; completed?: boolean; updatedAt: Date } = {
+			updatedAt: new Date(),
 		}
-		this.todos = this.todos.map(item => (item.id === id ? next : item))
-		return next
+
+		if ("title" in payload && payload.title !== undefined) {
+			updateData.title = payload.title
+		}
+
+		if ("completed" in payload && payload.completed !== undefined) {
+			updateData.completed = payload.completed
+		}
+
+		const [todo] = await this.db.update(todos).set(updateData).where(eq(todos.id, id)).returning()
+
+		if (!todo) throw new Error("Todo not updated")
+
+		return todo
 	}
 
-	remove(id: number): void {
-		this.findOne(id)
-		this.todos = this.todos.filter(item => item.id !== id)
+	async remove(id: number): Promise<void> {
+		await this.findOne(id)
+		await this.db.delete(todos).where(eq(todos.id, id))
 	}
 }
-
