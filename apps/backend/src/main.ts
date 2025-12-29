@@ -1,5 +1,10 @@
+import { config } from "dotenv"
+import { resolve } from "path"
 import { ValidationPipe, VersioningType } from "@nestjs/common"
 import { NestFactory } from "@nestjs/core"
+
+// Load .env file from root before any other imports
+config({ path: resolve(__dirname, "..", "..", "..", ".env") })
 
 import { AppModule } from "./app.module"
 

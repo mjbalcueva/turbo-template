@@ -5,7 +5,8 @@
   "exports": {
     "./next.json": "./next.json",
     "./nest.json": "./nest.json",
-    "./pkg.json": "./pkg.json"
+    "./pkg.json": "./pkg.json",
+    "./pkg-node.json": "./pkg-node.json"
   },
   "files": [
     "*.json"

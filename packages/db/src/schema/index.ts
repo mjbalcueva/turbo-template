@@ -1,6 +1,6 @@
-import * as todos from "./todos"
+import * as todos from "./todos.js"
 
-export * from "./todos"
+export * from "./todos.js"
 
 export const schema = {
 	...todos,
