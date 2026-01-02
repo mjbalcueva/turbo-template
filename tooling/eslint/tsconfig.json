@@ -1,5 +1,5 @@
 {
-	"extends": "@repo/tsconfig/pkg.json",
+	"extends": "@repo/tsconfig/tool",
 	"include": ["."],
 	"exclude": ["node_modules"]
 }

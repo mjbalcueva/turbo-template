@@ -1,14 +1,14 @@
 {
-  "name": "@repo/tsconfig",
-  "private": true,
-  "type": "module",
-  "exports": {
-    "./next.json": "./next.json",
-    "./nest.json": "./nest.json",
-    "./pkg.json": "./pkg.json",
-    "./pkg-node.json": "./pkg-node.json"
-  },
-  "files": [
-    "*.json"
-  ]
+	"name": "@repo/tsconfig",
+	"private": true,
+	"type": "module",
+	"exports": {
+		"./next.json": "./next.json",
+		"./nest.json": "./nest.json",
+		"./tool": "./tool.json",
+		"./pkg": "./pkg.json"
+	},
+	"files": [
+		"*.json"
+	]
 }

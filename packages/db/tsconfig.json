@@ -1,5 +1,5 @@
 {
-	"extends": "@repo/tsconfig/pkg-node.json",
+	"extends": "@repo/tsconfig/pkg",
 	"compilerOptions": {
 		"baseUrl": "./",
 		"rootDir": "./src",
