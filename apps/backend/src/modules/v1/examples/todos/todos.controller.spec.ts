@@ -1,3 +1,5 @@
+import { type DrizzleDb } from "@/common/database/drizzle.providers"
+
 import { TodosController } from "./todos.controller"
 import { TodosService } from "./todos.service"
 
@@ -6,18 +8,19 @@ describe("TodosController (v1)", () => {
 	let service: TodosService
 
 	beforeEach(() => {
-		service = new TodosService()
+		const mockDb = {} as DrizzleDb
+		service = new TodosService(mockDb)
 		controller = new TodosController(service)
 	})
 
-	it("returns todos decorated with apiVersion", () => {
-		const todos = controller.getTodos()
+	it("returns todos decorated with apiVersion", async () => {
+		const todos = await controller.getTodos()
 		expect(todos).toHaveLength(2)
 		expect(todos.every(todo => todo.apiVersion === "1")).toBe(true)
 	})
 
-	it("creates and returns versioned todo", () => {
-		const created = controller.createTodo({ title: "Versioned", completed: true })
+	it("creates and returns versioned todo", async () => {
+		const created = await controller.createTodo({ title: "Versioned", completed: true })
 		expect(created).toEqual(
 			expect.objectContaining({
 				title: "Versioned",
@@ -27,14 +30,14 @@ describe("TodosController (v1)", () => {
 		)
 	})
 
-	it("propagates updates through service while preserving apiVersion", () => {
-		const created = controller.createTodo({ title: "Updatable" })
-		const replaced = controller.replaceTodo(String(created.id), {
+	it("propagates updates through service while preserving apiVersion", async () => {
+		const created = await controller.createTodo({ title: "Updatable" })
+		const replaced = await controller.replaceTodo(String(created.id), {
 			title: "Replaced",
 			completed: true,
 		})
 		expect(replaced.apiVersion).toBe("1")
-		const patched = controller.updateTodo(String(created.id), { completed: false })
+		const patched = await controller.updateTodo(String(created.id), { completed: false })
 		expect(patched).toEqual(
 			expect.objectContaining({
 				id: created.id,
