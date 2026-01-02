@@ -43,6 +43,7 @@ onlyBuiltDependencies:
   - "@nestjs/core"
   - "@scarf/scarf"
   - argon2
+  - better-sqlite3
   - core-js-pure
   - esbuild
   - grpc-tools

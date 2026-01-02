@@ -8,7 +8,11 @@ import { AppModule } from "./app.module"
 config()
 
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule)
+	const app = await NestFactory.create(AppModule, {
+		// Disable body parser to allow Better Auth to handle raw request body
+		// The library will automatically re-add the default body parsers
+		bodyParser: false,
+	})
 	app.setGlobalPrefix("api")
 	app.enableVersioning({
 		type: VersioningType.URI,
