@@ -1,13 +1,12 @@
 import "dotenv/config"
-import { createJiti } from "jiti"
 
-const jiti = createJiti(import.meta.url)
+import type { NextConfig } from "next"
 
-// Import env files to validate at build time. Use jiti so we can load .ts files in here.
-await jiti.import("./env")
+// Import env files to validate at build time
+import "./env"
 
 /** @type {import("next").NextConfig} */
-const config = {
+const config: NextConfig = {
 	/** Enables hot reloading for local packages without a build step */
 	// transpilePackages: [
 	//   "@repo/api",
