@@ -3,7 +3,10 @@
 	"compilerOptions": {
 		"baseUrl": "./",
 		"outDir": "./dist",
-		"types": ["node"]
+		"types": ["node"],
+		"paths": {
+			"@/*": ["./src/*"]
+		}
 	},
 	"include": ["src/**/*"]
 }
