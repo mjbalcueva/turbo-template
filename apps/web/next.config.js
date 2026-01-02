@@ -1,3 +1,4 @@
+import "dotenv/config"
 import { createJiti } from "jiti"
 
 const jiti = createJiti(import.meta.url)

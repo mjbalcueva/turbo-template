@@ -38,10 +38,10 @@
 		"format": "prettier --write \"src/**/*.ts\"",
 		"lint": "eslint --flag unstable_native_nodejs_ts_config \"src/**/*.ts\" --fix",
 		"typecheck": "tsc --noEmit",
-		"push": "pnpm build && dotenv -e ../../.env -- drizzle-kit push",
-		"studio": "pnpm build && dotenv -e ../../.env -- drizzle-kit studio",
-		"generate": "pnpm build && dotenv -e ../../.env -- drizzle-kit generate",
-		"migrate": "pnpm build && dotenv -e ../../.env -- drizzle-kit migrate"
+		"push": "pnpm build && drizzle-kit push",
+		"studio": "pnpm build && drizzle-kit studio",
+		"generate": "pnpm build && drizzle-kit generate",
+		"migrate": "pnpm build && drizzle-kit migrate"
 	},
 	"dependencies": {
 		"drizzle-orm": "^0.45.0",
@@ -53,6 +53,7 @@
 		"@repo/tsconfig": "workspace:*",
 		"@types/node": "catalog:",
 		"@types/pg": "^8.15.6",
+		"dotenv": "^16.4.7",
 		"drizzle-kit": "^0.30.6",
 		"eslint": "catalog:",
 		"prettier": "catalog:",

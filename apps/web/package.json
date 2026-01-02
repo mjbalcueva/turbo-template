@@ -4,15 +4,14 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"build": "pnpm with-env next build",
+		"build": "next build",
 		"clean": "git clean -xdf .cache .next .turbo node_modules",
-		"dev": "pnpm with-env next dev --turbopack -p 3001",
+		"dev": "next dev --turbopack -p 3001",
 		"format": "prettier --check . --ignore-path ../../.gitignore",
 		"format:fix": "prettier --write . --ignore-path ../../.gitignore",
 		"lint": "eslint --flag unstable_native_nodejs_ts_config",
-		"start": "pnpm with-env next start -p 3001",
-		"typecheck": "tsc --noEmit",
-		"with-env": "dotenv -e ../../.env --"
+		"start": "next start -p 3001",
+		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@t3-oss/env-nextjs": "^0.13.8",
@@ -31,6 +30,7 @@
 		"@types/react-dom": "catalog:",
 		"babel-plugin-react-compiler": "1.0.0",
 		"baseline-browser-mapping": "^2.9.5",
+		"dotenv": "^16.4.7",
 		"eslint": "catalog:",
 		"jiti": "^2.6.1",
 		"prettier": "catalog:",
