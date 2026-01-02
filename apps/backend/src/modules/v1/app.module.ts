@@ -6,4 +6,3 @@ import { ExamplesModule } from "./examples/examples.module"
 	imports: [ExamplesModule],
 })
 export class AppModule {}
-

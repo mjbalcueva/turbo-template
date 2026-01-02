@@ -9,4 +9,3 @@ export class CreateTodoDto {
 	@IsOptional()
 	completed?: boolean
 }
-

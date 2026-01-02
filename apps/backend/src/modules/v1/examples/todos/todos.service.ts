@@ -1,8 +1,9 @@
 import { Inject, Injectable } from "@nestjs/common"
 import { eq } from "drizzle-orm"
 
-import { DRIZZLE_DB, type DrizzleDb } from "@/common/database/drizzle.providers"
 import { todos } from "@repo/db/schema"
+
+import { DRIZZLE_DB, type DrizzleDb } from "@/common/database/drizzle.providers"
 
 import { CreateTodoDto } from "./dto/create-todo.dto"
 import { UpdateTodoDto } from "./dto/update-todo.dto"
