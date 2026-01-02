@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common"
 import { eq } from "drizzle-orm"
 
-import { DRIZZLE_DB, type DrizzleDb } from "../../../database/drizzle.providers"
+import { DRIZZLE_DB, type DrizzleDb } from "@/common/database/drizzle.providers"
 import { todos } from "@repo/db/schema"
 
 import { CreateTodoDto } from "./dto/create-todo.dto"

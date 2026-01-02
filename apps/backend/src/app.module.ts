@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common"
 
-import { AppModule as V1AppModule } from "./v1/app.module"
-import { AppModule as V2AppModule } from "./v2/app.module"
-import { HealthModule } from "./health/health.module"
+import { DatabaseModule } from "@/common/database/database.module"
+import { HealthModule } from "@/common/health/health.module"
+import { AppModule as V1AppModule } from "@/modules/v1/app.module"
 
 @Module({
-	imports: [HealthModule, V1AppModule, V2AppModule],
+	imports: [DatabaseModule, HealthModule, V1AppModule],
 })
 export class AppModule {}

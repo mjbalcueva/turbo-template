@@ -39,12 +39,12 @@ describe("Examples API (e2e)", () => {
 		)
 	})
 
-	it("/api/v2/examples/todos (GET) returns versioned payload", async () => {
-		const response = await request(app.getHttpServer()).get("/api/v2/examples/todos").expect(200)
+	it("/api/v1/examples/todos (GET) returns versioned payload", async () => {
+		const response = await request(app.getHttpServer()).get("/api/v1/examples/todos").expect(200)
 		expect(response.body).toEqual(
 			expect.arrayContaining([
-				expect.objectContaining({ title: "First todo example", apiVersion: "2" }),
-				expect.objectContaining({ title: "Second todo example", apiVersion: "2" }),
+				expect.objectContaining({ title: "First todo example", apiVersion: "1" }),
+				expect.objectContaining({ title: "Second todo example", apiVersion: "1" }),
 			])
 		)
 	})

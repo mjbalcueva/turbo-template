@@ -4,7 +4,7 @@ import request from "supertest"
 import { type App } from "supertest/types"
 
 import { AppModule } from "../src/app.module"
-import { DRIZZLE_DB } from "../src/health/drizzle.providers"
+import { DRIZZLE_DB } from "@/common/database/drizzle.providers"
 
 describe("Health (e2e)", () => {
 	let app: INestApplication<App>
@@ -15,7 +15,7 @@ describe("Health (e2e)", () => {
 		})
 			.overrideProvider(DRIZZLE_DB)
 			.useValue({
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				 
 				execute: jest.fn(async () => [] as any[]),
 			})
 			.compile()
