@@ -3,9 +3,8 @@ import { Test, type TestingModule } from "@nestjs/testing"
 import request from "supertest"
 import { type App } from "supertest/types"
 
-import { DRIZZLE_DB } from "@/common/database/drizzle.providers"
-
-import { AppModule } from "../src/app.module"
+import { AppModule } from "@/app.module"
+import { DB } from "@/common/database/database.providers"
 
 describe("Health (e2e)", () => {
 	let app: INestApplication<App>
@@ -14,7 +13,7 @@ describe("Health (e2e)", () => {
 		const moduleFixture: TestingModule = await Test.createTestingModule({
 			imports: [AppModule],
 		})
-			.overrideProvider(DRIZZLE_DB)
+			.overrideProvider(DB)
 			.useValue({
 				execute: jest.fn(async () => [] as any[]),
 			})

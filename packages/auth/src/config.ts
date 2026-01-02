@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
 
-import { createDrizzleClient } from "@repo/db/client"
+import { createDBClient } from "@repo/db/client"
 
 /**
  * Creates a Better Auth instance configured with Drizzle adapter.
@@ -12,7 +12,7 @@ import { createDrizzleClient } from "@repo/db/client"
  * @returns Better Auth instance
  */
 export function createAuth(): ReturnType<typeof betterAuth> {
-	const db = createDrizzleClient()
+	const db = createDBClient()
 
 	return betterAuth({
 		database: drizzleAdapter(db, {
@@ -22,7 +22,7 @@ export function createAuth(): ReturnType<typeof betterAuth> {
 		baseURL:
 			process.env.BETTER_AUTH_URL ??
 			process.env.NEXT_PUBLIC_BETTER_AUTH_URL ??
-			"http://localhost:3000",
+			"http://localhost:3001",
 		secret: process.env.BETTER_AUTH_SECRET ?? process.env.AUTH_SECRET,
 		emailAndPassword: {
 			enabled: true,

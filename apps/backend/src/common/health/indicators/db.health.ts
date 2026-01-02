@@ -2,11 +2,11 @@ import { Inject, Injectable } from "@nestjs/common"
 import { type HealthIndicatorResult } from "@nestjs/terminus"
 import { sql } from "drizzle-orm"
 
-import { DRIZZLE_DB, type DrizzleDb } from "@/common/database/drizzle.providers"
+import { DB, type DBType } from "@/common/database/database.providers"
 
 @Injectable()
-export class DrizzleHealthIndicator {
-	constructor(@Inject(DRIZZLE_DB) private readonly db: DrizzleDb) {}
+export class DBHealthIndicator {
+	constructor(@Inject(DB) private readonly db: DBType) {}
 	async pingCheck(key: string): Promise<HealthIndicatorResult> {
 		try {
 			await this.db.execute(sql`select 1`)

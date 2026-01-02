@@ -4,15 +4,15 @@ import { Pool } from "pg"
 
 import { schema } from "@repo/db/schema"
 
-import { DRIZZLE_DB, DRIZZLE_POOL, type DrizzleDb } from "./drizzle.providers"
+import { DB, POOL, type DBType } from "./database.providers"
 
 /**
  * Global NestJS module that provides Drizzle ORM database client and connection pool.
  *
  * This module should be imported once in your root AppModule.
  * It provides:
- * - DRIZZLE_DB: The Drizzle database client (injectable, required)
- * - DRIZZLE_POOL: The PostgreSQL connection pool (injectable, required)
+ * - DB: The Drizzle database client (injectable, required)
+ * - POOL: The PostgreSQL connection pool (injectable, required)
  *
  * The connection pool is automatically closed when the module is destroyed.
  *
@@ -32,7 +32,7 @@ import { DRIZZLE_DB, DRIZZLE_POOL, type DrizzleDb } from "./drizzle.providers"
 @Module({
 	providers: [
 		{
-			provide: DRIZZLE_POOL,
+			provide: POOL,
 			useFactory: (): Pool => {
 				const connectionString = process.env.POSTGRES_URL
 				if (!connectionString) {
@@ -42,17 +42,17 @@ import { DRIZZLE_DB, DRIZZLE_POOL, type DrizzleDb } from "./drizzle.providers"
 			},
 		},
 		{
-			provide: DRIZZLE_DB,
-			inject: [DRIZZLE_POOL],
-			useFactory: (pool: Pool): DrizzleDb => {
+			provide: DB,
+			inject: [POOL],
+			useFactory: (pool: Pool): DBType => {
 				return drizzle(pool, { schema })
 			},
 		},
 	],
-	exports: [DRIZZLE_DB, DRIZZLE_POOL],
+	exports: [DB, POOL],
 })
-export class DatabaseModule implements OnModuleDestroy {
-	constructor(@Inject(DRIZZLE_POOL) private readonly pool: Pool) {}
+export class DBModule implements OnModuleDestroy {
+	constructor(@Inject(POOL) private readonly pool: Pool) {}
 
 	async onModuleDestroy(): Promise<void> {
 		await this.pool.end()

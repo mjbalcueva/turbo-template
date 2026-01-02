@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm"
 
 import { todos } from "@repo/db/schema"
 
-import { DRIZZLE_DB, type DrizzleDb } from "@/common/database/drizzle.providers"
+import { DB, type DBType } from "@/common/database/database.providers"
 
 import { CreateTodoDto } from "./dto/create-todo.dto"
 import { UpdateTodoDto } from "./dto/update-todo.dto"
@@ -18,7 +18,7 @@ export type Todo = {
 
 @Injectable()
 export class TodosService {
-	constructor(@Inject(DRIZZLE_DB) private readonly db: DrizzleDb) {}
+	constructor(@Inject(DB) private readonly db: DBType) {}
 
 	async findAll(): Promise<Todo[]> {
 		return this.db.select().from(todos)

@@ -6,7 +6,7 @@ import { schema, type Schema } from "./schema/index.js"
 /**
  * Type for the Drizzle database client
  */
-export type DrizzleClient = NodePgDatabase<Schema>
+export type DBClient = NodePgDatabase<Schema>
 
 /**
  * Creates a PostgreSQL connection pool
@@ -30,7 +30,7 @@ export function createPool(connectionString?: string): Pool {
  * @returns A Drizzle database client
  * @throws Error if connection string is not provided and POSTGRES_URL is not set
  */
-export function createDrizzleClient(connectionString?: string): DrizzleClient {
+export function createDBClient(connectionString?: string): DBClient {
 	const pool = createPool(connectionString)
 	return drizzle(pool, { schema })
 }
@@ -41,6 +41,6 @@ export function createDrizzleClient(connectionString?: string): DrizzleClient {
  * @param pool - PostgreSQL connection pool
  * @returns A Drizzle database client
  */
-export function createDrizzleClientFromPool(pool: Pool): DrizzleClient {
+export function createDBClientFromPool(pool: Pool): DBClient {
 	return drizzle(pool, { schema })
 }

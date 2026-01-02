@@ -3,7 +3,7 @@ import { HealthCheckService } from "@nestjs/terminus"
 import fs from "node:fs"
 import path from "node:path"
 
-import { DrizzleHealthIndicator } from "./drizzle/drizzle.health"
+import { DBHealthIndicator } from "./indicators/db.health"
 
 type HealthChecks = {
 	database: { status: string; message?: string } & Record<string, unknown>
@@ -22,7 +22,7 @@ type HealthPayload = {
 export class HealthService {
 	constructor(
 		private readonly health: HealthCheckService,
-		private readonly drizzleIndicator: DrizzleHealthIndicator
+		private readonly drizzleIndicator: DBHealthIndicator
 	) {}
 
 	async check(): Promise<HealthPayload> {

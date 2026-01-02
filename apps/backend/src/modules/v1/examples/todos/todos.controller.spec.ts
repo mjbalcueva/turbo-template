@@ -1,4 +1,4 @@
-import { type DrizzleDb } from "@/common/database/drizzle.providers"
+import { type DBType } from "@/common/database/database.providers"
 
 import { TodosController } from "./todos.controller"
 import { TodosService } from "./todos.service"
@@ -8,7 +8,7 @@ describe("TodosController (v1)", () => {
 	let service: TodosService
 
 	beforeEach(() => {
-		const mockDb = {} as DrizzleDb
+		const mockDb = {} as DBType
 		service = new TodosService(mockDb)
 		controller = new TodosController(service)
 	})
