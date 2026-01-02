@@ -14,7 +14,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@t3-oss/env-nextjs": "^0.13.8",
+		"@t3-oss/env-nextjs": "^0.13.10",
 		"next": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
@@ -29,8 +29,8 @@
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"babel-plugin-react-compiler": "1.0.0",
-		"baseline-browser-mapping": "^2.9.5",
-		"dotenv": "^16.4.7",
+		"baseline-browser-mapping": "^2.9.11",
+		"dotenv": "^16.6.1",
 		"eslint": "catalog:",
 		"jiti": "^2.6.1",
 		"prettier": "catalog:",

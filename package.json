@@ -5,7 +5,7 @@
 		"node": ">=22.20.0",
 		"pnpm": ">=10.15.1"
 	},
-	"packageManager": "pnpm@10.25.0",
+	"packageManager": "pnpm@10.27.0",
 	"scripts": {
 		"build": "turbo run build",
 		"clean": "git clean -xdf node_modules",
