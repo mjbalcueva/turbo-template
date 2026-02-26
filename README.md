@@ -1,4 +1,4 @@
-# Quanby Turbo Template
+# Turbo Template
 
 A TypeScript-first monorepo template using **Turborepo** and **pnpm** for full-stack development.
 

@@ -4,7 +4,7 @@ globs: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.dart"]
 alwaysApply: true
 ---
 
-# Quanby Turbo Template - AI Agent Rules
+# Turbo Template - AI Agent Rules
 
 ## Project Overview
 
